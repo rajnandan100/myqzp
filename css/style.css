@@ -1,0 +1,520 @@
+/* QP-VARS-001: CSS Custom Properties */
+:root {
+  /* Primary Colors - Enhanced Purple/Blue Gradient */
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  
+  /* Glass Colors */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-bg-light: rgba(255, 255, 255, 0.2);
+  --glass-bg-dark: rgba(0, 0, 0, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  
+  /* Text Colors */
+  --text-white-75: rgba(255, 255, 255, 0.75);
+  --text-white-50: rgba(255, 255, 255, 0.5);
+  --text-white-25: rgba(255, 255, 255, 0.25);
+  
+  /* Shadows */
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  --button-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  
+  /* Typography */
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing */
+  --section-padding: 5rem 0;
+  --container-padding: 2rem;
+  
+  /* Borders */
+  --border-radius: 20px;
+  --border-radius-lg: 30px;
+  --border-radius-sm: 12px;
+}
+
+/* QP-RESET-001: Enhanced Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+  overflow-x: hidden;
+}
+
+/* QP-GLASS-001: Glassmorphism Effects */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.glass-nav {
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-dropdown {
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-sm);
+}
+
+/* QP-NAV-001: Enhanced Navigation */
+.navbar-brand .brand-text {
+  background: linear-gradient(45deg, #ffffff, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-link-modern {
+  position: relative;
+  padding: 0.75rem 1rem !important;
+  margin: 0 0.25rem;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s ease;
+}
+
+.nav-link-modern:hover,
+.nav-link-modern.active {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateY(-2px);
+}
+
+.rotate-icon {
+  animation: rotateGlow 3s ease-in-out infinite;
+}
+
+@keyframes rotateGlow {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+/* QP-HERO-001: Enhanced Hero Section */
+.hero-section {
+  min-height: 100vh;
+  background: var(--primary-gradient);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.particles-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 10;
+  position: relative;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ffffff, #ffd700, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 2s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(30deg); }
+}
+
+.hero-title {
+  font-size: clamp(2rem, 8vw, 4rem);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-family: var(--font-secondary);
+  color: var(--text-white-75) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  z-index: 5;
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: 120px;
+  display: block;
+}
+
+/* QP-STATS-001: Hero Stats Cards */
+.stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: var(--card-shadow);
+}
+
+.stat-card .stat-icon {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* QP-BUTTONS-001: Enhanced Button Styles */
+.glass-btn {
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1rem 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: var(--button-shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.glass-btn:hover:before {
+  left: 100%;
+}
+
+.glass-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.glass-btn-outline {
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.glass-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* QP-BADGES-001: Glass Badges */
+.glass-badge {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: white !important;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.glass-badge:hover {
+  transform: scale(1.1);
+  background: var(--glass-bg);
+}
+
+/* QP-FORMS-001: Enhanced Form Styles */
+.glass-input {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-sm);
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+  transform: translateY(-2px);
+}
+
+.glass-input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* QP-SUBJECTS-001: Subject Selection Cards */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.glass-subject-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-subject-card:hover {
+  transform: translateY(-10px) rotate(2deg);
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: var(--card-shadow);
+}
+
+.glass-subject-card.selected {
+  border-color: #6366f1;
+  background: var(--primary-gradient);
+  color: white;
+  transform: scale(1.05);
+}
+
+.glass-subject-card .subject-icon {
+  font-size: 3rem;
+  color: #6366f1;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.glass-subject-card:hover .subject-icon,
+.glass-subject-card.selected .subject-icon {
+  color: white;
+  transform: scale(1.2);
+}
+
+.glass-subject-card .checkmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.glass-subject-card.selected .checkmark {
+  transform: scale(1);
+}
+
+/* QP-CARDS-001: Quick Action Cards */
+.quick-action-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-shadow);
+  border-color: #6366f1;
+}
+
+/* QP-UTILITIES-001: Utility Classes */
+.text-white-75 { color: var(--text-white-75) !important; }
+.text-white-50 { color: var(--text-white-50) !important; }
+.text-white-25 { color: var(--text-white-25) !important; }
+
+.hover-text-white:hover { color: white !important; }
+
+.bg-gradient-primary {
+  background: var(--primary-gradient) !important;
+}
+
+.shadow-glass {
+  box-shadow: var(--glass-shadow) !important;
+}
+
+/* QP-RESPONSIVE-001: Mobile Optimizations */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 3rem 0;
+    --container-padding: 1rem;
+  }
+  
+  .hero-section {
+    min-height: 90vh;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .subject-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .glass-subject-card {
+    padding: 1.5rem 1rem;
+    min-height: 150px;
+  }
+  
+  .glass-subject-card .subject-icon {
+    font-size: 2.5rem;
+  }
+  
+  .nav-link-modern {
+    margin: 0.25rem 0;
+  }
+}
+
+/* QP-ANIMATIONS-001: Additional Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* QP-LOADING-001: Loading States */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmerLoading 1.5s infinite;
+}
+
+@keyframes shimmerLoading {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* QP-SCROLLBAR-001: Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-gradient);
+}
