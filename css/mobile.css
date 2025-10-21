@@ -1,0 +1,115 @@
+/* QP-MOBILE-001: Mobile-First Responsive Design */
+
+/* Base Mobile Styles (320px and up) */
+@media screen and (max-width: 575px) {
+  /* Typography */
+  html { font-size: 14px; }
+  
+  /* Navigation */
+  .navbar-brand { font-size: 1.2rem !important; }
+  .nav-link { font-size: 0.9rem; padding: 0.5rem 0.75rem !important; }
+  
+  /* Hero Section */
+  .hero-section { min-height: 100vh; padding: 2rem 0; }
+  .hero-title { font-size: 2rem; line-height: 1.2; }
+  .hero-subtitle { font-size: 1rem; }
+  
+  /* Stats Grid */
+  .hero-stats .col-6 { margin-bottom: 1rem; }
+  .stat-card { padding: 1rem !important; }
+  .stat-card h3 { font-size: 1.2rem; }
+  .stat-card .fa-2x { font-size: 1.5rem !important; }
+  
+  /* Forms */
+  .glass-input { padding: 0.75rem 1rem; font-size: 0.9rem; }
+  
+  /* Subject Cards */
+  .subject-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .glass-subject-card { padding: 1rem; min-height: 130px; }
+  .glass-subject-card .subject-icon { font-size: 2rem; }
+  .glass-subject-card h6 { font-size: 0.85rem; }
+  
+  /* Buttons */
+  .glass-btn, .glass-btn-outline { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+  
+  /* Cards */
+  .glass-card { padding: 1.5rem !important; }
+  .quick-action-card { padding: 1.5rem !important; }
+}
+
+/* Small Mobile (375px and up) */
+@media screen and (min-width: 375px) and (max-width: 575px) {
+  .hero-title { font-size: 2.2rem; }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .glass-subject-card { min-height: 140px; padding: 1.25rem; }
+}
+
+/* Large Mobile (414px and up) */
+@media screen and (min-width: 414px) and (max-width: 767px) {
+  .hero-title { font-size: 2.4rem; }
+  .hero-subtitle { font-size: 1.1rem; }
+  .stat-card h3 { font-size: 1.3rem; }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .glass-subject-card { min-height: 150px; }
+}
+
+/* Tablet Portrait (768px and up) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hero-title { font-size: 2.8rem; }
+  .subject-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-stats { margin-top: 2rem; }
+}
+
+/* Touch-Friendly Interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .nav-link { min-height: 44px; display: flex; align-items: center; }
+  .glass-btn, .glass-btn-outline { min-height: 44px; }
+  .glass-subject-card { min-height: 120px; }
+  
+  /* Remove hover effects on touch devices */
+  .glass-card:hover { transform: none; }
+  .stat-card:hover { transform: none; }
+  .glass-subject-card:hover { transform: none; }
+  
+  /* Enhance tap feedback */
+  .glass-btn:active { transform: scale(0.98); }
+  .glass-subject-card:active { transform: scale(0.95); }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-title { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
+  .hero-subtitle { text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); }
+}
+
+/* Landscape Mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .hero-section { min-height: auto; padding: 1rem 0; }
+  .hero-stats { margin-top: 1rem; }
+  .stat-card { padding: 0.75rem !important; }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .glass-input { color: #fff; }
+  .glass-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { 
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particles-bg { display: none; }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .glass-card { border-width: 2px; }
+  .glass-input { border-width: 2px; }
+  .glass-btn { border: 2px solid white; }
+}
