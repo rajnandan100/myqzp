@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- QP-STUDY-META-001: Study Materials Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Study Materials - Free and Premium PDFs for competitive exam preparation" />
+    
+    <title>Study Materials - Quiz Portal</title>
+
+    <!-- QP-STUDY-CDN-001: CDN Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css" />
+
+    <!-- QP-STUDY-CSS-001: Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/study-materials.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+</head>
+<body>
+    <!-- QP-STUDY-NAV-001: Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary sticky-top shadow-lg glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="../index.html">
+                <i class="fas fa-graduation-cap me-2 rotate-icon"></i>
+                <span class="brand-text">Quiz Portal</span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="../index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern active" href="study-materials.html">
+                            <i class="fas fa-book-open me-2"></i>Study Materials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="../leaderboard.html">
+                            <i class="fas fa-trophy me-2"></i>Leaderboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-link-modern" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark glass-dropdown">
+                            <li><a class="dropdown-item" href="../auth/sign-in.html"><i class="fas fa-sign-in-alt me-2"></i>Sign In</a></li>
+                            <li><a class="dropdown-item" href="../auth/sign-up.html"><i class="fas fa-user-plus me-2"></i>Sign Up</a></li>
+                            <li><a class="dropdown-item" href="../auth/dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QP-STUDY-HERO-001: Study Materials Hero -->
+    <section class="study-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold text-white mb-4">
+                        <i class="fas fa-book-reader me-3 text-warning"></i>
+                        Study Materials
+                    </h1>
+                    <p class="lead text-white-75 mb-4">
+                        Access comprehensive study resources, practice PDFs, and premium content 
+                        designed for competitive exam success.
+                    </p>
+                    <div class="hero-stats d-flex flex-wrap gap-3">
+                        <span class="badge glass-badge fs-6 px-3 py-2">
+                            <i class="fas fa-file-pdf text-danger me-2"></i>
+                            500+ PDFs
+                        </span>
+                        <span class="badge glass-badge fs-6 px-3 py-2">
+                            <i class="fas fa-crown text-warning me-2"></i>
+                            Premium Content
+                        </span>
+                        <span class="badge glass-badge fs-6 px-3 py-2">
+                            <i class="fas fa-mobile-alt text-info me-2"></i>
+                            Mobile Optimized
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="study-hero-card glass-card p-4 text-center">
+                        <div class="hero-icon mb-3">
+                            <i class="fas fa-graduation-cap fa-4x text-warning"></i>
+                        </div>
+                        <h5 class="text-white fw-bold mb-3">Start Learning Today</h5>
+                        <a href="#materials-grid" class="btn btn-warning btn-lg glass-btn w-100">
+                            <i class="fas fa-arrow-down me-2"></i>Browse Materials
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QP-STUDY-MAIN-001: Main Content -->
+    <main class="study-main py-5">
+        <div class="container">
+            <!-- QP-STUDY-FILTERS-001: Search and Filter Section -->
+            <section class="filters-section mb-5" data-aos="fade-up">
+                <div class="glass-card p-4">
+                    <div class="row g-4 align-items-end">
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">
+                                <i class="fas fa-search text-primary me-2"></i>Search Materials
+                            </label>
+                            <div class="search-input-group">
+                                <input type="text" class="form-control glass-input" id="searchInput" placeholder="Search PDFs, topics, subjects..." />
+                                <button class="search-btn" onclick="performSearch()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label fw-semibold">Category</label>
+                            <select class="form-select glass-input" id="categoryFilter">
+                                <option value="">All Categories</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="english">English</option>
+                                <option value="reasoning">Reasoning</option>
+                                <option value="gk">General Knowledge</option>
+                                <option value="current-affairs">Current Affairs</option>
+                                <option value="science">Science</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label fw-semibold">Type</label>
+                            <select class="form-select glass-input" id="typeFilter">
+                                <option value="">All Types</option>
+                                <option value="free">Free</option>
+                                <option value="premium">Premium</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label fw-semibold">Sort By</label>
+                            <select class="form-select glass-input" id="sortFilter">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="popular">Most Popular</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="size">File Size</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <button class="btn btn-outline-secondary w-100 glass-btn-outline" onclick="clearFilters()">
+                                <i class="fas fa-times me-2"></i>Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- QP-STUDY-QUICK-FILTERS-001: Quick Filter Buttons -->
+                    <div class="quick-filters mt-4">
+                        <h6 class="fw-bold mb-3">Quick Filters:</h6>
+                        <div class="filter-buttons d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-primary btn-sm filter-btn active" data-filter="all">
+                                <i class="fas fa-th-large me-1"></i>All Materials
+                            </button>
+                            <button class="btn btn-outline-success btn-sm filter-btn" data-filter="free">
+                                <i class="fas fa-gift me-1"></i>Free Content
+                            </button>
+                            <button class="btn btn-outline-warning btn-sm filter-btn" data-filter="premium">
+                                <i class="fas fa-crown me-1"></i>Premium
+                            </button>
+                            <button class="btn btn-outline-info btn-sm filter-btn" data-filter="recent">
+                                <i class="fas fa-clock me-1"></i>Recently Added
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm filter-btn" data-filter="trending">
+                                <i class="fas fa-fire me-1"></i>Trending
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- QP-STUDY-RESULTS-COUNT-001: Results Counter -->
+                    <div class="results-info d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                        <span class="text-muted">
+                            <span id="resultsCount">Loading...</span> materials found
+                        </span>
+                        <div class="view-toggle">
+                            <button class="btn btn-outline-primary btn-sm active" id="gridView" onclick="switchView('grid')">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" id="listView" onclick="switchView('list')">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QP-STUDY-MATERIALS-001: Materials Grid -->
+            <section class="materials-section" id="materials-grid">
+                <div class="materials-container">
+                    <!-- Loading State -->
+                    <div class="loading-state text-center py-5" id="loadingState">
+                        <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <h5 class="text-muted">Loading study materials...</h5>
+                        <p class="text-muted">Please wait while we fetch the latest content</p>
+                    </div>
+                    
+                    <!-- Materials Grid -->
+                    <div class="materials-grid d-none" id="materialsGrid">
+                        <!-- Materials will be loaded here dynamically -->
+                    </div>
+                    
+                    <!-- No Results State -->
+                    <div class="no-results text-center py-5 d-none" id="noResults">
+                        <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                        <h4 class="text-muted">No materials found</h4>
+                        <p class="text-muted">Try adjusting your search criteria or browse all materials</p>
+                        <button class="btn btn-primary" onclick="clearFilters()">
+                            <i class="fas fa-refresh me-2"></i>Show All Materials
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- QP-STUDY-PAGINATION-001: Pagination -->
+                <div class="pagination-container mt-5">
+                    <nav aria-label="Study materials pagination">
+                        <ul class="pagination justify-content-center" id="materialsPagination">
+                            <!-- Pagination will be generated dynamically -->
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- QP-STUDY-CATEGORIES-001: Popular Categories -->
+            <section class="categories-section mt-5" data-aos="fade-up">
+                <h3 class="h4 fw-bold mb-4 text-center">
+                    <i class="fas fa-bookmark text-primary me-2"></i>
+                    Popular Categories
+                </h3>
+                <div class="row g-4">
+                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="category-card glass-card p-4 text-center h-100" onclick="filterByCategory('mathematics')">
+                            <div class="category-icon mb-3">
+                                <i class="fas fa-calculator fa-3x text-primary"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Mathematics</h5>
+                            <p class="text-muted mb-3">Algebra, Geometry, Arithmetic, Statistics</p>
+                            <span class="badge bg-primary">120+ PDFs</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="category-card glass-card p-4 text-center h-100" onclick="filterByCategory('english')">
+                            <div class="category-icon mb-3">
+                                <i class="fas fa-book-open fa-3x text-success"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">English</h5>
+                            <p class="text-muted mb-3">Grammar, Vocabulary, Comprehension</p>
+                            <span class="badge bg-success">85+ PDFs</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="category-card glass-card p-4 text-center h-100" onclick="filterByCategory('reasoning')">
+                            <div class="category-icon mb-3">
+                                <i class="fas fa-brain fa-3x text-warning"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Reasoning</h5>
+                            <p class="text-muted mb-3">Logical, Verbal, Non-verbal Reasoning</p>
+                            <span class="badge bg-warning text-dark">95+ PDFs</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="category-card glass-card p-4 text-center h-100" onclick="filterByCategory('gk')">
+                            <div class="category-icon mb-3">
+                                <i class="fas fa-globe fa-3x text-info"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">General Knowledge</h5>
+                            <p class="text-muted mb-3">History, Geography, Polity, Economy</p>
+                            <span class="badge bg-info">150+ PDFs</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="category-card glass-card p-4 text-center h-100" onclick="filterByCategory('current-affairs')">
+                            <div class="category-icon mb-3">
+                                <i class="fas fa-newspaper fa-3x text-danger"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Current Affairs</h5>
+                            <p class="text-muted mb-3">Monthly digests, Important events</p>
+                            <span class="badge bg-danger">60+ PDFs</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="category-card glass-card p-4 text-center h-100" onclick="filterByCategory('science')">
+                            <div class="category-icon mb-3">
+                                <i class="fas fa-atom fa-3x text-purple"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Science</h5>
+                            <p class="text-muted mb-3">Physics, Chemistry, Biology</p>
+                            <span class="badge bg-secondary">75+ PDFs</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- QP-STUDY-MODALS-001: PDF Viewer Modal -->
+    <div class="modal fade" id="pdfViewerModal" tabindex="-1" aria-labelledby="pdfViewerTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content glass-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="pdfViewerTitle">
+                        <i class="fas fa-file-pdf text-danger me-2"></i>
+                        PDF Viewer
+                    </h5>
+                    <div class="modal-header-controls d-flex gap-2">
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="downloadPDF()">
+                            <i class="fas fa-download me-1"></i>Download
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="printPDF()">
+                            <i class="fas fa-print me-1"></i>Print
+                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body p-0">
+                    <!-- PDF Viewer Container -->
+                    <div class="pdf-viewer-container">
+                        <div class="pdf-viewer-controls">
+                            <div class="d-flex justify-content-between align-items-center p-3 bg-light">
+                                <div class="viewer-controls">
+                                    <button class="btn btn-sm btn-outline-secondary me-2" onclick="zoomOut()">
+                                        <i class="fas fa-search-minus"></i>
+                                    </button>
+                                    <span class="zoom-level">100%</span>
+                                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="zoomIn()">
+                                        <i class="fas fa-search-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="page-controls">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="prevPage()">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <span class="page-info mx-3">
+                                        Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+                                    </span>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="nextPage()">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="view-controls">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="fitToWidth()">
+                                        <i class="fas fa-arrows-alt-h"></i> Fit Width
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="fullscreen()">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- PDF Content Area -->
+                        <div class="pdf-content-area" id="pdfContentArea">
+                            <div class="pdf-loading text-center py-5">
+                                <div class="spinner-border text-primary mb-3" role="status">
+                                    <span class="visually-hidden">Loading PDF...</span>
+                                </div>
+                                <p class="text-muted">Loading PDF content...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light">
+                    <div class="d-flex justify-content-between w-100 align-items-center">
+                        <div class="pdf-info">
+                            <small class="text-muted">
+                                <i class="fas fa-file-alt me-1"></i>
+                                <span id="pdfSize">Loading...</span> • 
+                                <span id="pdfPages">0 pages</span>
+                            </small>
+                        </div>
+                        <div class="rating-section">
+                            <span class="me-2">Rate this material:</span>
+                            <div class="star-rating">
+                                <i class="fas fa-star" data-rating="1"></i>
+                                <i class="fas fa-star" data-rating="2"></i>
+                                <i class="fas fa-star" data-rating="3"></i>
+                                <i class="fas fa-star" data-rating="4"></i>
+                                <i class="fas fa-star" data-rating="5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QP-STUDY-PREMIUM-MODAL-001: Premium Upgrade Modal -->
+    <div class="modal fade" id="premiumModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fas fa-crown text-warning me-2"></i>
+                        Upgrade to Premium
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="premium-icon mb-4">
+                        <i class="fas fa-gem fa-4x text-warning"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Unlock Premium Content</h4>
+                    <p class="text-muted mb-4">
+                        Get access to exclusive study materials, detailed solutions, 
+                        and advanced practice questions.
+                    </p>
+                    
+                    <div class="premium-features mb-4">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <small>500+ Premium PDFs</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <small>Detailed Solutions</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <small>Monthly Updates</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <small>Download Unlimited</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing mb-4">
+                        <h3 class="fw-bold text-primary">₹299/month</h3>
+                        <small class="text-muted">Cancel anytime</small>
+                    </div>
+                    
+                    <button class="btn btn-warning btn-lg w-100 glass-btn mb-3">
+                        <i class="fas fa-crown me-2"></i>Upgrade Now
+                    </button>
+                    <a href="#" class="text-muted small">View all plans</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QP-STUDY-FOOTER-001: Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-graduation-cap me-2"></i>Quiz Portal
+                    </h5>
+                    <p class="text-white-50 mb-3">Your complete learning companion for competitive exam preparation.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../index.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="study-materials.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Study Materials</a></li>
+                        <li class="mb-2"><a href="../leaderboard.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Leaderboard</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-3">Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-text-white" onclick="filterByCategory('mathematics')"><i class="fas fa-angle-right me-2"></i>Mathematics</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-text-white" onclick="filterByCategory('english')"><i class="fas fa-angle-right me-2"></i>English</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-text-white" onclick="filterByCategory('reasoning')"><i class="fas fa-angle-right me-2"></i>Reasoning</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-text-white" onclick="filterByCategory('gk')"><i class="fas fa-angle-right me-2"></i>General Knowledge</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3">Contact Info</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>support@quizportal.com</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91 12345 67890</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</li>
+                    </ul>
+                    
+                    <!-- Subtle Admin Link -->
+                    <div class="mt-4">
+                        <small class="text-white-25">
+                            <a href="../admin/dashboard.html" class="text-white-25 text-decoration-none opacity-50" style="font-size: 0.7rem;">System</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="bg-white my-4 opacity-25" />
+            <div class="text-center text-white-50">
+                <p class="mb-0">&copy; 2025 Quiz Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QP-STUDY-SCRIPTS-001: Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.js"></script>
+    
+    <!-- PDF.js for PDF viewing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/study-materials.js"></script>
+
+    <!-- QP-STUDY-INIT-001: Initialize Study Materials -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Study Materials
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.StudyMaterialsManager) {
+                window.StudyMaterialsManager.init();
+            }
+        });
+    </script>
+</body>
+</html>
