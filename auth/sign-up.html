@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- QP-AUTH-META-001: Authentication Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Sign up for Quiz Portal - Start your learning journey today" />
+    
+    <title>Sign Up - Quiz Portal</title>
+
+    <!-- QP-AUTH-CDN-001: CDN Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css" />
+
+    <!-- QP-AUTH-CSS-001: Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+
+    <!-- QP-CLERK-001: Clerk Authentication -->
+    <script src="https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.min.js"></script>
+</head>
+<body class="auth-body">
+    <!-- QP-AUTH-NAV-001: Simplified Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="../index.html">
+                <i class="fas fa-graduation-cap me-2 rotate-icon"></i>
+                <span class="brand-text">Quiz Portal</span>
+            </a>
+            
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="sign-in.html">
+                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </a>
+                <a class="nav-link" href="../index.html">
+                    <i class="fas fa-home me-2"></i>Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QP-AUTH-MAIN-001: Main Authentication Content -->
+    <main class="auth-main">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100 py-5">
+                <div class="col-lg-5 col-md-7 col-sm-9">
+                    <!-- QP-AUTH-CARD-001: Sign Up Card -->
+                    <div class="auth-card glass-card" data-aos="zoom-in">
+                        <div class="auth-header text-center mb-4">
+                            <div class="auth-icon mb-3">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h2 class="h3 fw-bold">Create Your Account</h2>
+                            <p class="text-muted">Join thousands of learners and start your journey</p>
+                        </div>
+
+                        <!-- QP-CLERK-SIGNUP-001: Clerk Sign Up Component -->
+                        <div id="clerk-sign-up"></div>
+
+                        <!-- QP-AUTH-DIVIDER-001: Social Login Divider -->
+                        <div class="auth-divider my-4">
+                            <span class="auth-divider-text">Or continue with email</span>
+                        </div>
+
+                        <!-- QP-AUTH-FALLBACK-001: Fallback Form (if Clerk fails) -->
+                        <form id="fallbackSignUpForm" class="d-none">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="fas fa-user text-primary me-2"></i>Full Name
+                                </label>
+                                <input type="text" class="form-control glass-input" id="fullName" required minlength="3" placeholder="Enter your full name" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="fas fa-envelope text-primary me-2"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control glass-input" id="email" required placeholder="Enter your email" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="fas fa-lock text-primary me-2"></i>Password
+                                </label>
+                                <div class="password-input-group">
+                                    <input type="password" class="form-control glass-input" id="password" required minlength="8" placeholder="Create a strong password" />
+                                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength mt-2">
+                                    <div class="password-strength-bar">
+                                        <div class="password-strength-fill"></div>
+                                    </div>
+                                    <small class="password-strength-text text-muted">Password strength</small>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="fas fa-lock text-primary me-2"></i>Confirm Password
+                                </label>
+                                <div class="password-input-group">
+                                    <input type="password" class="form-control glass-input" id="confirmPassword" required placeholder="Confirm your password" />
+                                    <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                    <label class="form-check-label small" for="termsCheck">
+                                        I agree to the <a href="../pages/terms.html" target="_blank" class="text-primary">Terms of Service</a> 
+                                        and <a href="../pages/privacy.html" target="_blank" class="text-primary">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="marketingCheck">
+                                    <label class="form-check-label small" for="marketingCheck">
+                                        I want to receive updates about new quizzes and study materials
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100 glass-btn mb-3" id="signUpBtn">
+                                <i class="fas fa-user-plus me-2"></i>Create Account
+                                <div class="button-spinner d-none">
+                                    <div class="spinner-border spinner-border-sm ms-2" role="status"></div>
+                                </div>
+                            </button>
+                        </form>
+
+                        <!-- QP-AUTH-FOOTER-001: Auth Footer Links -->
+                        <div class="auth-footer text-center mt-4">
+                            <p class="mb-3">
+                                Already have an account? 
+                                <a href="sign-in.html" class="text-primary fw-semibold">Sign In</a>
+                            </p>
+                            
+                            <div class="auth-benefits mt-4 p-3 glass-card">
+                                <h6 class="fw-bold mb-2">
+                                    <i class="fas fa-star text-warning me-2"></i>Why Join Quiz Portal?
+                                </h6>
+                                <div class="row text-start">
+                                    <div class="col-6">
+                                        <small class="d-block mb-1">
+                                            <i class="fas fa-check-circle text-success me-1"></i>Free Practice Tests
+                                        </small>
+                                        <small class="d-block mb-1">
+                                            <i class="fas fa-check-circle text-success me-1"></i>Progress Tracking
+                                        </small>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="d-block mb-1">
+                                            <i class="fas fa-check-circle text-success me-1"></i>Study Materials
+                                        </small>
+                                        <small class="d-block mb-1">
+                                            <i class="fas fa-check-circle text-success me-1"></i>Leaderboards
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QP-AUTH-TRUST-001: Trust Indicators -->
+                    <div class="trust-indicators text-center mt-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="trust-item">
+                                    <i class="fas fa-shield-alt text-success fs-3 mb-2"></i>
+                                    <small class="d-block text-muted">Secure & Private</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="trust-item">
+                                    <i class="fas fa-users text-primary fs-3 mb-2"></i>
+                                    <small class="d-block text-muted">10K+ Students</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="trust-item">
+                                    <i class="fas fa-mobile-alt text-info fs-3 mb-2"></i>
+                                    <small class="d-block text-muted">Mobile Friendly</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- QP-AUTH-SCRIPTS-001: Authentication Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/clerk-auth.js"></script>
+
+    <!-- QP-AUTH-INIT-001: Initialize Authentication -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize Clerk Sign Up
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.ClerkAuth) {
+                window.ClerkAuth.initSignUp();
+            }
+        });
+    </script>
+</body>
+</html>
