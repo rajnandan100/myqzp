@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- QP-ABOUT-META-001: About Us Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="About Quiz Portal - Learn about our mission, vision, and team dedicated to transforming competitive exam preparation" />
+    <meta name="keywords" content="about quiz portal, education platform, competitive exams, learning mission" />
+    
+    <title>About Us - Quiz Portal</title>
+
+    <!-- QP-ABOUT-CDN-001: CDN Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css" />
+
+    <!-- QP-ABOUT-CSS-001: Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+</head>
+<body>
+    <!-- QP-ABOUT-NAV-001: Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary sticky-top shadow-lg glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="../index.html">
+                <i class="fas fa-graduation-cap me-2 rotate-icon"></i>
+                <span class="brand-text">Quiz Portal</span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="../index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="study-materials.html">
+                            <i class="fas fa-book-open me-2"></i>Study Materials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="../leaderboard.html">
+                            <i class="fas fa-trophy me-2"></i>Leaderboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern active" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-modern" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-link-modern" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark glass-dropdown">
+                            <li><a class="dropdown-item" href="../auth/sign-in.html"><i class="fas fa-sign-in-alt me-2"></i>Sign In</a></li>
+                            <li><a class="dropdown-item" href="../auth/sign-up.html"><i class="fas fa-user-plus me-2"></i>Sign Up</a></li>
+                            <li><a class="dropdown-item" href="../auth/dashboard.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QP-ABOUT-HERO-001: About Hero Section -->
+    <section class="page-hero about-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold text-white mb-4">
+                        About Quiz Portal
+                    </h1>
+                    <p class="lead text-white-75 mb-4">
+                        Empowering millions of students to achieve their dreams through 
+                        innovative learning technology and comprehensive exam preparation.
+                    </p>
+                    <div class="hero-stats d-flex flex-wrap gap-3">
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-white">10K+</h3>
+                            <p class="text-white-75 mb-0">Active Students</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-white">500+</h3>
+                            <p class="text-white-75 mb-0">Study Materials</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-white">95%</h3>
+                            <p class="text-white-75 mb-0">Success Rate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="hero-image-container">
+                        <div class="hero-card glass-card p-4">
+                            <div class="text-center">
+                                <i class="fas fa-rocket fa-5x text-warning mb-3"></i>
+                                <h4 class="text-white fw-bold mb-3">Launch Your Career</h4>
+                                <p class="text-white-75">Join thousands of successful candidates who trusted Quiz Portal for their exam preparation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QP-ABOUT-MAIN-001: Main Content -->
+    <main class="page-main py-5">
+        <div class="container">
+            <!-- QP-ABOUT-MISSION-001: Mission & Vision -->
+            <section class="mission-section mb-5" data-aos="fade-up">
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="content-card glass-card p-5 h-100">
+                            <div class="card-icon mb-4">
+                                <i class="fas fa-bullseye fa-3x text-primary"></i>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Our Mission</h3>
+                            <p class="text-muted mb-4">
+                                To democratize quality education and make competitive exam preparation 
+                                accessible to every student, regardless of their geographical location or 
+                                economic background.
+                            </p>
+                            <ul class="mission-points list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Provide high-quality study materials for free
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Create an engaging learning experience
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Build a supportive learning community
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="content-card glass-card p-5 h-100">
+                            <div class="card-icon mb-4">
+                                <i class="fas fa-eye fa-3x text-success"></i>
+                            </div>
+                            <h3 class="h4 fw-bold mb-3">Our Vision</h3>
+                            <p class="text-muted mb-4">
+                                To become the world's leading educational platform that transforms 
+                                the way students prepare for competitive exams through innovative 
+                                technology and personalized learning paths.
+                            </p>
+                            <ul class="vision-points list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-star text-warning me-2"></i>
+                                    Global reach with local expertise
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-star text-warning me-2"></i>
+                                    AI-powered personalized learning
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-star text-warning me-2"></i>
+                                    Continuous innovation in education
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QP-ABOUT-VALUES-001: Core Values -->
+            <section class="values-section mb-5" data-aos="fade-up">
+                <div class="text-center mb-5">
+                    <h2 class="h3 fw-bold mb-3">Our Core Values</h2>
+                    <p class="text-muted">The principles that guide everything we do</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="value-card text-center p-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-heart fa-3x text-danger"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-3">Student-Centric</h4>
+                            <p class="text-muted">
+                                Every decision we make is focused on improving the student 
+                                learning experience and outcomes.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="value-card text-center p-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-lightbulb fa-3x text-warning"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-3">Innovation</h4>
+                            <p class="text-muted">
+                                We continuously innovate to bring cutting-edge technology 
+                                and methodologies to education.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="value-card text-center p-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-users fa-3x text-info"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-3">Community</h4>
+                            <p class="text-muted">
+                                We believe in the power of community learning and 
+                                peer-to-peer knowledge sharing.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="value-card text-center p-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-shield-alt fa-3x text-success"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-3">Integrity</h4>
+                            <p class="text-muted">
+                                We maintain the highest standards of honesty, transparency, 
+                                and ethical conduct in all our operations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="value-card text-center p-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-rocket fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-3">Excellence</h4>
+                            <p class="text-muted">
+                                We strive for excellence in everything we do, from content 
+                                quality to user experience.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="value-card text-center p-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-hand-holding-heart fa-3x text-secondary"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-3">Accessibility</h4>
+                            <p class="text-muted">
+                                We ensure our platform is accessible to all students, 
+                                regardless of their abilities or circumstances.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QP-ABOUT-TEAM-001: Meet Our Team -->
+            <section class="team-section mb-5" data-aos="fade-up">
+                <div class="text-center mb-5">
+                    <h2 class="h3 fw-bold mb-3">Meet Our Team</h2>
+                    <p class="text-muted">The passionate individuals behind Quiz Portal</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="100">
+                        <div class="team-card text-center">
+                            <div class="team-image mb-3">
+                                <div class="avatar-circle">
+                                    <i class="fas fa-user fa-3x text-primary"></i>
+                                </div>
+                            </div>
+                            <h4 class="h5 fw-bold mb-2">Dr. Rajesh Kumar</h4>
+                            <p class="text-primary fw-semibold mb-2">Founder & CEO</p>
+                            <p class="text-muted mb-3">
+                                15+ years in educational technology with a PhD in Computer Science. 
+                                Passionate about democratizing education.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="text-primary me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-primary me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-primary"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="200">
+                        <div class="team-card text-center">
+                            <div class="team-image mb-3">
+                                <div class="avatar-circle">
+                                    <i class="fas fa-user fa-3x text-success"></i>
+                                </div>
+                            </div>
+                            <h4 class="h5 fw-bold mb-2">Priya Sharma</h4>
+                            <p class="text-success fw-semibold mb-2">Head of Content</p>
+                            <p class="text-muted mb-3">
+                                Former UPSC trainer with 10+ years of experience in competitive 
+                                exam preparation and content development.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="text-success me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-success me-3"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-success"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="flip-left" data-aos-delay="300">
+                        <div class="team-card text-center">
+                            <div class="team-image mb-3">
+                                <div class="avatar-circle">
+                                    <i class="fas fa-user fa-3x text-warning"></i>
+                                </div>
+                            </div>
+                            <h4 class="h5 fw-bold mb-2">Amit Patel</h4>
+                            <p class="text-warning fw-semibold mb-2">CTO</p>
+                            <p class="text-muted mb-3">
+                                Full-stack developer and tech architect with expertise in 
+                                scalable educational platforms and mobile technologies.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="text-warning me-3"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-warning me-3"><i class="fab fa-github"></i></a>
+                                <a href="#" class="text-warning"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QP-ABOUT-JOURNEY-001: Our Journey -->
+            <section class="journey-section mb-5" data-aos="fade-up">
+                <div class="text-center mb-5">
+                    <h2 class="h3 fw-bold mb-3">Our Journey</h2>
+                    <p class="text-muted">Milestones that define our growth</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-marker">
+                            <i class="fas fa-lightbulb text-warning"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4 class="fw-bold">2020 - The Idea</h4>
+                            <p class="text-muted">
+                                Quiz Portal was conceived during the pandemic when students 
+                                needed accessible online learning solutions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-marker">
+                            <i class="fas fa-rocket text-primary"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4 class="fw-bold">2021 - Launch</h4>
+                            <p class="text-muted">
+                                Launched with 50 quizzes and 100 study materials. 
+                                Reached 1,000 users in the first month.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-marker">
+                            <i class="fas fa-users text-success"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4 class="fw-bold">2022 - Growth</h4>
+                            <p class="text-muted">
+                                Expanded to 10,000 active users and introduced premium 
+                                features with advanced analytics.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-marker">
+                            <i class="fas fa-mobile-alt text-info"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4 class="fw-bold">2023 - Mobile First</h4>
+                            <p class="text-muted">
+                                Redesigned the platform with mobile-first approach, 
+                                resulting in 300% increase in mobile usage.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-marker">
+                            <i class="fas fa-trophy text-warning"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4 class="fw-bold">2024 - Recognition</h4>
+                            <p class="text-muted">
+                                Won "Best EdTech Platform" award and crossed 50,000 
+                                registered users milestone.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-marker">
+                            <i class="fas fa-globe text-primary"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4 class="fw-bold">2025 - Global Expansion</h4>
+                            <p class="text-muted">
+                                Expanding internationally and introducing AI-powered 
+                                personalized learning paths.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QP-ABOUT-CTA-001: Call to Action -->
+            <section class="cta-section" data-aos="zoom-in">
+                <div class="cta-card glass-card p-5 text-center">
+                    <h3 class="h4 fw-bold mb-3">Ready to Start Your Learning Journey?</h3>
+                    <p class="text-muted mb-4">
+                        Join thousands of successful students who have achieved their dreams with Quiz Portal.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="../auth/sign-up.html" class="btn btn-primary btn-lg me-3 mb-3 glass-btn">
+                            <i class="fas fa-user-plus me-2"></i>Join Now - It's Free!
+                        </a>
+                        <a href="contact.html" class="btn btn-outline-primary btn-lg mb-3 glass-btn-outline">
+                            <i class="fas fa-envelope me-2"></i>Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- QP-ABOUT-FOOTER-001: Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-graduation-cap me-2"></i>Quiz Portal
+                    </h5>
+                    <p class="text-white-50 mb-3">Empowering students to achieve their dreams through innovative learning technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../index.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Home</a></li>
+                        <li class="mb-2"><a href="study-materials.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Study Materials</a></li>
+                        <li class="mb-2"><a href="../leaderboard.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Leaderboard</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-3">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="privacy.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Terms of Service</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>Contact</a></li>
+                        <li class="mb-2"><a href="faq.html" class="text-white-50 text-decoration-none hover-text-white"><i class="fas fa-angle-right me-2"></i>FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3">Contact Info</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>support@quizportal.com</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91 12345 67890</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>New Delhi, India</li>
+                    </ul>
+                    
+                    <!-- Subtle Admin Link -->
+                    <div class="mt-4">
+                        <small class="text-white-25">
+                            <a href="../admin/dashboard.html" class="text-white-25 text-decoration-none opacity-50" style="font-size: 0.7rem;">System</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="bg-white my-4 opacity-25" />
+            <div class="text-center text-white-50">
+                <p class="mb-0">&copy; 2025 Quiz Portal. All rights reserved. Made with ❤️ for students worldwide.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QP-ABOUT-SCRIPTS-001: Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <!-- QP-ABOUT-INIT-001: Initialize About Page -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Add smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
