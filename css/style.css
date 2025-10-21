@@ -518,3 +518,302 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-gradient);
 }
+
+
+
+
+
+
+
+
+
+
+
+/* QP-DASHBOARD-STATS-FIX-001: Dashboard Welcome Stats Visibility Fix */
+
+/* Dashboard Main Container */
+.dashboard-main {
+    background: #f8f9fa;
+    min-height: calc(100vh - 80px);
+}
+
+/* Welcome Section Styling */
+.welcome-section .glass-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 2rem !important;
+}
+
+/* Welcome Stats Badges - High Visibility Fix */
+.welcome-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.welcome-stats .badge {
+    background: rgba(99, 102, 241, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(99, 102, 241, 0.3) !important;
+    color: #1f2937 !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 25px !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+    text-shadow: none !important;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Individual Badge Colors for Better Distinction */
+.welcome-stats .badge:nth-child(1) {
+    background: rgba(245, 158, 11, 0.15) !important;
+    border-color: rgba(245, 158, 11, 0.4) !important;
+    color: #92400e !important;
+}
+
+.welcome-stats .badge:nth-child(1) i {
+    color: #f59e0b !important;
+}
+
+.welcome-stats .badge:nth-child(2) {
+    background: rgba(34, 197, 94, 0.15) !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+    color: #15803d !important;
+}
+
+.welcome-stats .badge:nth-child(2) i {
+    color: #22c55e !important;
+}
+
+.welcome-stats .badge:nth-child(3) {
+    background: rgba(99, 102, 241, 0.15) !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+    color: #3730a3 !important;
+}
+
+.welcome-stats .badge:nth-child(3) i {
+    color: #6366f1 !important;
+}
+
+/* Badge Hover Effects */
+.welcome-stats .badge:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.6) !important;
+}
+
+/* Badge Icons */
+.welcome-stats .badge i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    opacity: 0.9;
+}
+
+/* Dashboard Stats Cards - Enhanced Visibility */
+.dashboard-main .stat-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.dashboard-main .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.dashboard-main .stat-card .stat-icon i {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.dashboard-main .stat-card:hover .stat-icon i {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.dashboard-main .stat-card h4 {
+    color: #1f2937 !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-main .stat-card small {
+    color: #6b7280 !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+/* Progress Bars - Enhanced Glass Effect */
+.glass-progress {
+    background: rgba(229, 231, 235, 0.6) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.glass-progress .progress-bar {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-progress .progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Activity and Leaderboard Items */
+.activity-item,
+.leader-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover,
+.leader-item:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    transform: translateX(8px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.15);
+}
+
+/* User Avatar Fallback */
+.user-avatar {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Greeting Text Styling */
+.greeting-text {
+    color: #1f2937 !important;
+    font-weight: 600;
+}
+
+#displayName {
+    color: #6366f1 !important;
+    font-weight: 700;
+}
+
+/* Mobile Responsiveness for Dashboard Stats */
+@media (max-width: 768px) {
+    .welcome-stats {
+        justify-content: center;
+        gap: 0.75rem;
+    }
+    
+    .welcome-stats .badge {
+        font-size: 0.8rem !important;
+        padding: 0.6rem 1rem !important;
+    }
+    
+    .dashboard-main .stat-card {
+        padding: 1rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .dashboard-main .stat-card h4 {
+        font-size: 1.4rem;
+    }
+    
+    .welcome-section .glass-card {
+        padding: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .welcome-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .welcome-stats .badge {
+        min-width: 200px;
+        justify-content: center;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .welcome-stats .badge {
+        background: white !important;
+        border-width: 3px !important;
+        color: #1f2937 !important;
+    }
+    
+    .dashboard-main .stat-card {
+        background: white !important;
+        border-width: 2px;
+        border-color: #6366f1 !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .welcome-stats .badge,
+    .dashboard-main .stat-card,
+    .glass-progress .progress-bar,
+    .activity-item,
+    .leader-item {
+        transition: none;
+        animation: none;
+    }
+    
+    .glass-progress .progress-bar::after {
+        display: none;
+    }
+}
+
+/* Print Styles for Dashboard */
+@media print {
+    .welcome-stats .badge {
+        background: white !important;
+        border: 1px solid #333 !important;
+        color: #333 !important;
+    }
+    
+    .dashboard-main .stat-card {
+        background: white !important;
+        border: 1px solid #333;
+        box-shadow: none;
+    }
+}
