@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- QP-ADMIN-META-001: Admin Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Quiz Portal Admin Dashboard - Manage users, quizzes, and content" />
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <title>Admin Dashboard - Quiz Portal</title>
+
+    <!-- QP-ADMIN-CDN-001: CDN Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css" />
+
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- QP-ADMIN-CSS-001: Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+</head>
+<body class="admin-body">
+    <!-- QP-ADMIN-NAV-001: Admin Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark admin-nav sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-4" href="dashboard.html">
+                <i class="fas fa-shield-alt me-2 text-warning"></i>
+                <span class="brand-text">Admin Panel</span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="adminNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active admin-nav-link" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-nav-link" href="user-manager.html">
+                            <i class="fas fa-users me-2"></i>Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-nav-link" href="quiz-manager.html">
+                            <i class="fas fa-clipboard-list me-2"></i>Quizzes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-nav-link" href="content-manager.html">
+                            <i class="fas fa-file-pdf me-2"></i>Content
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle admin-nav-link" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-shield me-2"></i>
+                            <span id="adminName">Administrator</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark admin-dropdown">
+                            <li><a class="dropdown-item" href="#" onclick="showAdminProfile()"><i class="fas fa-user-edit me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showSystemSettings()"><i class="fas fa-cogs me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showSecurityLogs()"><i class="fas fa-history me-2"></i>Security Logs</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../index.html"><i class="fas fa-home me-2"></i>Main Site</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="adminLogout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- QP-ADMIN-MAIN-001: Main Dashboard Content -->
+    <main class="admin-main">
+        <div class="container-fluid">
+            <!-- QP-ADMIN-HEADER-001: Dashboard Header -->
+            <div class="dashboard-header mb-4" data-aos="fade-down">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="h3 fw-bold mb-2">
+                            <i class="fas fa-chart-line text-primary me-2"></i>
+                            Dashboard Overview
+                        </h1>
+                        <p class="text-muted mb-0">Monitor and manage your quiz portal</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="dashboard-actions">
+                            <button class="btn btn-primary me-2" onclick="refreshDashboard()">
+                                <i class="fas fa-sync-alt me-2"></i>Refresh
+                            </button>
+                            <button class="btn btn-outline-success" onclick="exportData()">
+                                <i class="fas fa-download me-2"></i>Export Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QP-ADMIN-STATS-001: System Statistics Cards -->
+            <div class="row g-4 mb-5" id="statsCards">
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card admin-card">
+                        <div class="stat-card-body">
+                            <div class="stat-icon">
+                                <i class="fas fa-users text-primary"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 class="stat-number" id="totalUsers">0</h3>
+                                <p class="stat-label">Total Users</p>
+                                <div class="stat-change">
+                                    <span class="change-indicator positive">
+                                        <i class="fas fa-arrow-up me-1"></i>+12%
+                                    </span>
+                                    <small class="text-muted">vs last month</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card admin-card">
+                        <div class="stat-card-body">
+                            <div class="stat-icon">
+                                <i class="fas fa-clipboard-list text-success"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 class="stat-number" id="totalQuizzes">0</h3>
+                                <p class="stat-label">Active Quizzes</p>
+                                <div class="stat-change">
+                                    <span class="change-indicator positive">
+                                        <i class="fas fa-arrow-up me-1"></i>+5%
+                                    </span>
+                                    <small class="text-muted">vs last month</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card admin-card">
+                        <div class="stat-card-body">
+                            <div class="stat-icon">
+                                <i class="fas fa-play-circle text-warning"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 class="stat-number" id="totalAttempts">0</h3>
+                                <p class="stat-label">Quiz Attempts</p>
+                                <div class="stat-change">
+                                    <span class="change-indicator positive">
+                                        <i class="fas fa-arrow-up me-1"></i>+25%
+                                    </span>
+                                    <small class="text-muted">vs last month</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card admin-card">
+                        <div class="stat-card-body">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-pdf text-info"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 class="stat-number" id="totalMaterials">0</h3>
+                                <p class="stat-label">Study Materials</p>
+                                <div class="stat-change">
+                                    <span class="change-indicator positive">
+                                        <i class="fas fa-arrow-up me-1"></i>+8%
+                                    </span>
+                                    <small class="text-muted">vs last month</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QP-ADMIN-CHARTS-001: Analytics Charts -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-chart-area text-primary me-2"></i>
+                                User Activity Trends
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            nvas id="activityChart" heightght="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="admin-card h-100">
+                        <div class="card-header">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-chart-pie text-success me-2"></i>
+                                Quiz Categories
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            nvas id="categorgoriesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QP-ADMIN-TABLES-001: Recent Activity Tables -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="admin-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-users text-primary me-2"></i>
+                                Recent Users
+                            </h5>
+                            <a href="user-manager.html" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0" id="recentUsersTable">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Email</th>
+                                            <th>Joined</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Recent users will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="admin-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-chart-line text-success me-2"></i>
+                                Recent Quiz Activity
+                            </h5>
+                            <a href="quiz-manager.html" class="btn btn-sm btn-outline-success">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0" id="recentQuizActivity">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Quiz</th>
+                                            <th>User</th>
+                                            <th>Score</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Recent quiz activity will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QP-ADMIN-SYSTEM-001: System Health & Alerts -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-heartbeat text-danger me-2"></i>
+                                System Health
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="system-metrics">
+                                <div class="row g-4">
+                                    <div class="col-md-3">
+                                        <div class="metric-item">
+                                            <div class="metric-icon">
+                                                <i class="fas fa-server text-primary"></i>
+                                            </div>
+                                            <div class="metric-details">
+                                                <h6 class="metric-value">98.5%</h6>
+                                                <p class="metric-label">Uptime</p>
+                                                <div class="metric-bar">
+                                                    <div class="metric-progress" style="width: 98.5%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="metric-item">
+                                            <div class="metric-icon">
+                                                <i class="fas fa-database text-success"></i>
+                                            </div>
+                                            <div class="metric-details">
+                                                <h6 class="metric-value">234 MB</h6>
+                                                <p class="metric-label">Database Size</p>
+                                                <div class="metric-bar">
+                                                    <div class="metric-progress bg-success" style="width: 45%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="metric-item">
+                                            <div class="metric-icon">
+                                                <i class="fas fa-tachometer-alt text-warning"></i>
+                                            </div>
+                                            <div class="metric-details">
+                                                <h6 class="metric-value">1.2s</h6>
+                                                <p class="metric-label">Avg Response</p>
+                                                <div class="metric-bar">
+                                                    <div class="metric-progress bg-warning" style="width: 80%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="metric-item">
+                                            <div class="metric-icon">
+                                                <i class="fas fa-shield-alt text-info"></i>
+                                            </div>
+                                            <div class="metric-details">
+                                                <h6 class="metric-value">Secure</h6>
+                                                <p class="metric-label">SSL Status</p>
+                                                <div class="metric-bar">
+                                                    <div class="metric-progress bg-info" style="width: 100%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="admin-card h-100">
+                        <div class="card-header">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                System Alerts
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alerts-list" id="systemAlerts">
+                                <div class="alert-item">
+                                    <div class="alert-icon success">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <h6>System Update Complete</h6>
+                                        <p class="text-muted small">Database optimized successfully</p>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="alert-item">
+                                    <div class="alert-icon warning">
+                                        <i class="fas fa-exclamation"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <h6>High CPU Usage</h6>
+                                        <p class="text-muted small">Server load at 85%</p>
+                                        <small class="text-muted">5 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="alert-item">
+                                    <div class="alert-icon info">
+                                        <i class="fas fa-info"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <h6>Backup Complete</h6>
+                                        <p class="text-muted small">Daily backup successful</p>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QP-ADMIN-QUICK-ACTIONS-001: Quick Actions Panel -->
+            <div class="row g-4 mb-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h5 class="fw-bold mb-0">
+                                <i class="fas fa-bolt text-warning me-2"></i>
+                                Quick Actions
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <button class="btn btn-outline-primary w-100 quick-action-btn" onclick="createNewQuiz()">
+                                        <i class="fas fa-plus-circle fa-2x mb-2 d-block"></i>
+                                        <span>New Quiz</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <button class="btn btn-outline-success w-100 quick-action-btn" onclick="uploadMaterial()">
+                                        <i class="fas fa-upload fa-2x mb-2 d-block"></i>
+                                        <span>Upload PDF</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <button class="btn btn-outline-info w-100 quick-action-btn" onclick="sendNotification()">
+                                        <i class="fas fa-bell fa-2x mb-2 d-block"></i>
+                                        <span>Send Alert</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <button class="btn btn-outline-warning w-100 quick-action-btn" onclick="systemBackup()">
+                                        <i class="fas fa-database fa-2x mb-2 d-block"></i>
+                                        <span>Backup</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <button class="btn btn-outline-secondary w-100 quick-action-btn" onclick="viewLogs()">
+                                        <i class="fas fa-list-alt fa-2x mb-2 d-block"></i>
+                                        <span>View Logs</span>
+                                    </button>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                    <button class="btn btn-outline-danger w-100 quick-action-btn" onclick="systemMaintenance()">
+                                        <i class="fas fa-tools fa-2x mb-2 d-block"></i>
+                                        <span>Maintenance</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- QP-ADMIN-MODALS-001: Admin Modals -->
+    <!-- Password Change Modal -->
+    <div class="modal fade" id="passwordModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content admin-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fas fa-key text-warning me-2"></i>Change Password
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="passwordChangeForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Current Password</label>
+                            <div class="password-input-group">
+                                <input type="password" class="form-control glass-input" id="currentPassword" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('currentPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">New Password</label>
+                            <div class="password-input-group">
+                                <input type="password" class="form-control glass-input" id="newPassword" required minlength="8">
+                                <button type="button" class="password-toggle" onclick="togglePassword('newPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Confirm New Password</label>
+                            <div class="password-input-group">
+                                <input type="password" class="form-control glass-input" id="confirmPassword" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning" onclick="changePassword()">
+                        <i class="fas fa-save me-2"></i>Update Password
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content admin-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fas fa-cogs text-primary me-2"></i>System Settings
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-tabs">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#generalSettings">General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#securitySettings">Security</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#emailSettings">Email</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-3">
+                            <div class="tab-pane active" id="generalSettings">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Site Name</label>
+                                        <input type="text" class="form-control glass-input" value="Quiz Portal">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Contact Email</label>
+                                        <input type="email" class="form-control glass-input" value="admin@quizportal.com">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-semibold">Site Description</label>
+                                        <textarea class="form-control glass-input" rows="3">Your complete learning companion for competitive exam preparation</textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                                            <label class="form-check-label fw-semibold" for="maintenanceMode">Maintenance Mode</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="registrationOpen" checked>
+                                            <label class="form-check-label fw-semibold" for="registrationOpen">Allow Registration</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="securitySettings">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Admin Session Timeout (minutes)</label>
+                                        <input type="number" class="form-control glass-input" value="30">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Max Login Attempts</label>
+                                        <input type="number" class="form-control glass-input" value="5">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="twoFactorAuth">
+                                            <label class="form-check-label fw-semibold" for="twoFactorAuth">Enable Two-Factor Authentication</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="emailSettings">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">SMTP Host</label>
+                                        <input type="text" class="form-control glass-input" value="smtp.gmail.com">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">SMTP Port</label>
+                                        <input type="number" class="form-control glass-input" value="587">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                            <label class="form-check-label fw-semibold" for="emailNotifications">Send Email Notifications</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveSettings()">
+                        <i class="fas fa-save me-2"></i>Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QP-ADMIN-SCRIPTS-001: Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/admin-panel.js"></script>
+
+    <!-- QP-ADMIN-INIT-001: Initialize Admin Dashboard -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize Admin Panel
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.AdminPanel) {
+                window.AdminPanel.init();
+            }
+        });
+    </script>
+</body>
+</html>
